@@ -88,7 +88,7 @@ export default function HeroSection() {
             transition={{ duration: 0.3 }}
           >
             <Image
-              src="/images/tynite.png"
+              src="/images/3dtynite.png"
               alt="Tynite Logo"
               width={400}
               height={400}
