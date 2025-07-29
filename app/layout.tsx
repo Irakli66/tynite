@@ -4,6 +4,7 @@ import "./globals.css";
 import { QueryProvider } from "@/components/QueryProvider";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           <QueryProvider>{children}</QueryProvider>
           <Footer />
         </ThemeProvider>

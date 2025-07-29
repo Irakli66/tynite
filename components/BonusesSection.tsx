@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink, Star } from "lucide-react";
 import { bonuses } from "@/types/bonus";
@@ -69,18 +70,20 @@ export default function BonusesSection() {
               </h3>
             </div>
 
-            <Button
-              variant="outline"
-              className="border-primary/40 text-primary hover:bg-primary/10 font-bold px-6 py-2"
-            >
-              VIEW ALL
-            </Button>
+            <Link href="/bonus">
+              <Button
+                variant="outline"
+                className="border-primary/40 text-primary hover:bg-primary/10 font-bold px-6 py-2"
+              >
+                VIEW ALL
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
 
         {/* Sites Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {bonuses.map((bonus, index) => (
+          {bonuses.slice(0, 4).map((bonus, index) => (
             <motion.div
               key={bonus.id}
               initial={{ opacity: 0, y: 50 }}
@@ -99,8 +102,8 @@ export default function BonusesSection() {
                 transition={{ duration: 0.3 }}
               >
                 {/* Site Logo Area */}
-                <div className="relative h-40 bg-gradient-to-br from-card to-card/80 flex items-center justify-center border-b border-border/40">
-                  <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-border/20">
+                <div className="relative h-40 bg-gradient-to-br from-card to-card/80 flex flex-col items-center justify-center border-b border-border/40 p-4">
+                  <div className="relative w-20 h-20 rounded-xl overflow-hidden border border-border/20 mb-3">
                     <Image
                       src={bonus.imageUrl}
                       alt={bonus.title}
@@ -108,6 +111,9 @@ export default function BonusesSection() {
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
+                  <h4 className="text-sm font-bold text-foreground text-center leading-tight">
+                    {bonus.title}
+                  </h4>
                 </div>
 
                 {/* Site URL */}
@@ -165,30 +171,6 @@ export default function BonusesSection() {
               </motion.div>
             </motion.div>
           ))}
-
-          {/* Add a placeholder card to maintain grid alignment */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: bonuses.length * 0.1,
-              duration: 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            viewport={{ once: true }}
-            className="group"
-          >
-            <div className="bg-card/30 backdrop-blur-sm border border-border/20 border-dashed rounded-2xl overflow-hidden h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-primary/50" />
-                </div>
-                <p className="text-muted-foreground font-medium">
-                  More sites coming soon
-                </p>
-              </div>
-            </div>
-          </motion.div> */}
         </div>
       </div>
     </section>

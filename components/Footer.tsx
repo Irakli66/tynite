@@ -2,23 +2,50 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Heart } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 import { socials } from "@/types/socials";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const quickLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "Bonuses", href: "#bonuses" },
-    { name: "Videos", href: "#videos" },
-    { name: "Socials", href: "#socials" },
+    { name: "Home", href: "#hero", isExternal: false, isHome: true },
+    { name: "Bonuses", href: "/bonus", isExternal: true, isHome: false },
+    { name: "Videos", href: "#videos", isExternal: false, isHome: false },
+    { name: "Socials", href: "#socials", isExternal: false, isHome: false },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNavClick = (link: (typeof quickLinks)[0]) => {
+    if (link.isExternal) {
+      // For external routes like /bonus, navigate using router
+      router.push(link.href);
+    } else if (link.isHome) {
+      // For HOME, always go to homepage and scroll to top
+      if (pathname !== "/") {
+        router.push("/");
+      } else {
+        // If already on homepage, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else {
+      // For other sections, scroll to section (only works on homepage)
+      if (pathname === "/") {
+        scrollToSection(link.href);
+      } else {
+        // If not on homepage, go to homepage first then scroll to section
+        router.push("/" + link.href);
+      }
     }
   };
 
@@ -76,12 +103,39 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-sm cursor-pointer text-muted-foreground hover:text-primary transition-colors duration-200 hover:translate-x-1 transform transition-transform"
-                  >
-                    {link.name}
-                  </button>
+                  {link.isExternal ? (
+                    <Link href={link.href}>
+                      <motion.div
+                        className={`text-sm cursor-pointer transition-colors duration-200 hover:translate-x-1 transform transition-transform inline-block ${
+                          link.name === "Bonuses"
+                            ? "text-primary font-bold hover:text-accent"
+                            : "text-muted-foreground hover:text-primary"
+                        }`}
+                        whileHover={{ x: 2 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {link.name}
+                        {link.name === "Bonuses" && (
+                          <motion.span
+                            className="ml-1 text-accent"
+                            animate={{ opacity: [1, 0.5, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            ✨
+                          </motion.span>
+                        )}
+                      </motion.div>
+                    </Link>
+                  ) : (
+                    <motion.button
+                      onClick={() => handleNavClick(link)}
+                      className="text-sm cursor-pointer text-muted-foreground hover:text-primary transition-colors duration-200 hover:translate-x-1 transform transition-transform"
+                      whileHover={{ x: 2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.button>
+                  )}
                 </li>
               ))}
             </ul>

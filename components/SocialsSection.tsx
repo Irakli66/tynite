@@ -5,8 +5,11 @@ import Image from "next/image";
 import { ExternalLink, Users } from "lucide-react";
 import { Button } from "./ui/button";
 import { socials } from "@/types/socials";
+import { useTheme } from "next-themes";
 
 export default function SocialsSection() {
+  const { theme } = useTheme();
+
   const getPlatformColor = (title: string) => {
     const colors = {
       Twitch: "from-purple-600 to-purple-700",

@@ -13,7 +13,7 @@ type HomeProps = {
 export default function Home({ videoData }: HomeProps) {
   return (
     <div className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
 
       {/* Main content with padding-top to account for fixed header */}
       <main>

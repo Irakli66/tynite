@@ -19,7 +19,7 @@ export const socials: Social[] = [
     id: "2",
     title: "X (Twitter)",
     description: "Follow me on X for updates",
-    imageUrl: "/images/socials/x-logo.png",
+    imageUrl: "/images/socials/x-white.png",
     link: "https://x.com/tynite66",
     code: "tynite66",
   },
