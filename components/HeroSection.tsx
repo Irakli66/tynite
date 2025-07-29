@@ -33,25 +33,26 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="h-[85vh] flex flex-col items-center justify-center relative bg-gradient-to-br from-background to-background/80 overflow-hidden"
+      className="min-h-[85vh]  max-h-[900px] flex flex-col items-center justify-center relative bg-gradient-to-br from-background to-background/80 overflow-hidden px-4 sm:px-6"
     >
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-8 px-6 max-w-6xl">
+      <div className="relative z-10 text-center space-y-6 sm:space-y-8 w-full max-w-6xl">
         {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-1 sm:space-y-2"
         >
-          <p className="text-lg md:text-xl text-muted-foreground tracking-wider">
+          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground tracking-wider px-4">
             Use code{" "}
             <span className="font-bold text-primary">&quot;TYNITE&quot;</span>{" "}
             and earn rewards
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground">
+          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground px-4">
             and bonuses with our partners.
           </p>
         </motion.div>
@@ -61,11 +62,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative my-12"
+          className="relative my-6 sm:my-8 md:my-12"
         >
           {/* Multiple neon glow layers */}
           <motion.div
-            className="absolute inset-0 bg-primary/40 blur-3xl rounded-full"
+            className="absolute inset-0 bg-primary/40 blur-2xl sm:blur-3xl rounded-full"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.4, 0.7, 0.4],
@@ -73,7 +74,7 @@ export default function HeroSection() {
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute inset-0 bg-accent/30 blur-2xl rounded-full"
+            className="absolute inset-0 bg-accent/30 blur-xl sm:blur-2xl rounded-full"
             animate={{
               scale: [1.1, 0.9, 1.1],
               opacity: [0.3, 0.6, 0.3],
@@ -92,7 +93,7 @@ export default function HeroSection() {
               alt="Tynite Logo"
               width={400}
               height={400}
-              className="mx-auto drop-shadow-2xl"
+              className="mx-auto drop-shadow-2xl w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px]"
               priority
             />
           </motion.div>
@@ -103,24 +104,32 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 w-full"
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto"
+          >
             <Button
               onClick={scrollToBonuses}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto min-w-[140px]"
             >
               BONUSES
             </Button>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto"
+          >
             <Button
               onClick={scrollToVideos}
               variant="outline"
-              className="border-2 border-primary/40 hover:border-primary hover:bg-primary/10 font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 group"
+              className="border-2 border-primary/40 hover:border-primary hover:bg-primary/10 font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl transition-all duration-300 group w-full sm:w-auto min-w-[140px]"
             >
-              <Play className="w-5 h-5 mr-2 group-hover:text-primary transition-colors" />
+              <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:text-primary transition-colors" />
               Videos
             </Button>
           </motion.div>
@@ -132,20 +141,20 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.button
           onClick={scrollToBonuses}
-          className="flex cursor-pointer flex-col items-center space-y-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+          className="flex cursor-pointer flex-col items-center space-y-1 sm:space-y-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
           whileHover={{ y: -2 }}
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="p-3 rounded-full border-2 border-current group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300"
-            animate={{ y: [0, 8, 0] }}
+            className="p-2 sm:p-3 rounded-full border-2 border-current group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300"
+            animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown className="w-5 h-5" />
+            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.div>
         </motion.button>
       </motion.div>

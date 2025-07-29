@@ -112,9 +112,60 @@ export default function RecentVideosSection({
 
   if (!regularVideos.length && !liveStreams.length) {
     return (
-      <section id="videos" className="py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-muted-foreground">No recent videos found.</p>
+      <section
+        id="videos"
+        className="py-20 bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden"
+      >
+        {/* Background decorations */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-center space-x-3 mb-8">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Play className="w-5 h-5 text-primary-foreground fill-current" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
+                RECENT VIDEOS
+              </h2>
+            </div>
+
+            {/* Empty state content */}
+            <div className="max-w-md mx-auto space-y-6">
+              <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                <Video className="w-12 h-12 text-primary/50" />
+              </div>
+              
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-foreground">
+                  Videos Currently Unavailable
+                </h3>
+                <p className="text-muted-foreground">
+                  YouTube API limit reached. Check out our latest content directly on YouTube!
+                </p>
+              </div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={() => window.open("https://youtube.com/@tynite", "_blank")}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <Play className="w-5 h-5 mr-2 fill-current" />
+                  Visit YouTube Channel
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
     );

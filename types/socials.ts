@@ -55,4 +55,12 @@ export const socials: Social[] = [
     link: "https://www.kick.com/tynite",
     code: "tynite",
   },
+  // {
+  //   id: "7",
+  //   title: "Discord",
+  //   description: "Follow me on Discord for community chats",
+  //   imageUrl: "/images/socials/discord-logo.png",
+  //   link: "https://discord.com/invite/tynite",
+  //   code: "tynite",
+  // },
 ];

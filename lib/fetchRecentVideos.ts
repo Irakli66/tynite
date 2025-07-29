@@ -14,147 +14,10 @@ export interface VideoData {
   liveStreams: YoutubeVideo[];
 }
 
-// Mock data for when API quota is exceeded
-const mockVideoData: VideoData = {
-  regularVideos: [
-    {
-      id: { videoId: "mock-video-1" },
-      snippet: {
-        title: "CS2 Best Plays & Highlights - Epic Gaming Moments",
-        publishedAt: "2024-01-15T10:30:00Z",
-        channelTitle: "Tynite",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "15420",
-        likeCount: "892",
-        commentCount: "124"
-      },
-      contentDetails: {
-        duration: "PT12M34S"
-      }
-    },
-    {
-      id: { videoId: "mock-video-2" },
-      snippet: {
-        title: "Gaming Setup Tour 2024 - My Ultimate Gaming Den",
-        publishedAt: "2024-01-12T14:15:00Z",
-        channelTitle: "Tynite",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "8750",
-        likeCount: "445",
-        commentCount: "67"
-      },
-      contentDetails: {
-        duration: "PT8M15S"
-      }
-    },
-    {
-      id: { videoId: "mock-video-3" },
-      snippet: {
-        title: "How to Get Better at CS2 - Pro Tips & Tricks",
-        publishedAt: "2024-01-10T16:45:00Z",
-        channelTitle: "Tynite",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "22100",
-        likeCount: "1205",
-        commentCount: "189"
-      },
-      contentDetails: {
-        duration: "PT15M42S"
-      }
-    },
-    {
-      id: { videoId: "mock-video-4" },
-      snippet: {
-        title: "Reacting to Best CSGO Moments of All Time",
-        publishedAt: "2024-01-08T12:00:00Z",
-        channelTitle: "Tynite",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "31450",
-        likeCount: "1890",
-        commentCount: "312"
-      },
-      contentDetails: {
-        duration: "PT18M23S"
-      }
-    }
-  ],
-  liveStreams: [
-    {
-      id: { videoId: "mock-stream-1" },
-      snippet: {
-        title: "🔴 LIVE: CS2 Ranked Grind - Road to Global Elite",
-        publishedAt: "2024-01-16T18:00:00Z",
-        channelTitle: "Tynite",
-        liveBroadcastContent: "live",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "234",
-        likeCount: "45",
-        commentCount: "28"
-      },
-      contentDetails: {
-        duration: "P0D"
-      },
-      liveStreamingDetails: {
-        actualStartTime: "2024-01-16T18:00:00Z"
-      }
-    },
-    {
-      id: { videoId: "mock-stream-2" },
-      snippet: {
-        title: "🔴 LIVE: Opening Cases & Viewer Games",
-        publishedAt: "2024-01-14T20:30:00Z",
-        channelTitle: "Tynite",
-        liveBroadcastContent: "completed",
-        thumbnails: {
-          medium: {
-            url: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-          }
-        }
-      },
-      statistics: {
-        viewCount: "1420",
-        likeCount: "189",
-        commentCount: "95"
-      },
-      contentDetails: {
-        duration: "PT2H15M30S"
-      },
-      liveStreamingDetails: {
-        actualStartTime: "2024-01-14T20:30:00Z",
-        actualEndTime: "2024-01-14T22:45:30Z"
-      }
-    }
-  ]
+// Empty data structure for when API is not available
+const emptyVideoData: VideoData = {
+  regularVideos: [],
+  liveStreams: []
 };
 
 // YouTube API response interfaces
@@ -254,10 +117,10 @@ export async function fetchRecentVideos(): Promise<VideoData> {
     return cachedData!;
   }
 
-  // Check if we should use mock data (no API key or in development)
+  // Check if we should use empty data (no API key or in development)
   if (!API_KEY || !CHANNEL_ID) {
-    console.log("⚠️ Using mock video data (no API credentials)");
-    return mockVideoData;
+    console.log("⚠️ No API credentials available - returning empty data");
+    return emptyVideoData;
   }
 
   try {
@@ -272,10 +135,10 @@ export async function fetchRecentVideos(): Promise<VideoData> {
       const err = await searchRes.json();
       console.error("❌ YouTube Search API Error:", err);
       
-      // If quota exceeded or other API error, fall back to mock data
+      // If quota exceeded or other API error, return empty data
       if (err?.error?.code === 403 || err?.error?.message?.includes('quota')) {
-        console.log("⚠️ API quota exceeded, using mock video data");
-        return mockVideoData;
+        console.log("⚠️ API quota exceeded - returning empty data");
+        return emptyVideoData;
       }
       
       throw new Error(err?.error?.message || "Failed to fetch videos");
@@ -285,8 +148,8 @@ export async function fetchRecentVideos(): Promise<VideoData> {
     const allItems = searchData.items.filter((item: YouTubeSearchItem) => item.id.videoId);
 
     if (allItems.length === 0) {
-      console.log("⚠️ No videos found, using mock video data");
-      return mockVideoData;
+      console.log("⚠️ No videos found - returning empty data");
+      return emptyVideoData;
     }
 
     // Get detailed information for all videos
@@ -353,8 +216,8 @@ export async function fetchRecentVideos(): Promise<VideoData> {
 
   } catch (error) {
     console.error("❌ Error fetching YouTube videos:", error);
-    console.log("⚠️ Falling back to mock video data");
-    return mockVideoData;
+    console.log("⚠️ Returning empty data due to error");
+    return emptyVideoData;
   }
 }
 
