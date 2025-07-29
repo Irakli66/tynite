@@ -71,7 +71,7 @@ export default function SocialsSection() {
 
         {/* Social Cards Grid */}
         <div
-          className={`grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-${socials.length} gap-6 max-w-6xl mx-auto`}
+          className={`grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto`}
         >
           {socials.map((social, index) => (
             <motion.div
