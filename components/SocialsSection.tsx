@@ -74,7 +74,7 @@ export default function SocialsSection() {
 
         {/* Social Cards Grid */}
         <div
-          className={`grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto`}
+          className={`grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto`}
         >
           {socials.map((social, index) => (
             <motion.div
@@ -142,7 +142,9 @@ export default function SocialsSection() {
                         )} hover:opacity-90 transition-all duration-200 font-bold text-white border-0 shadow-lg`}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        FOLLOW
+                        {social.title.toUpperCase() === "DISCORD"
+                          ? "JOIN"
+                          : "FOLLOW"}
                       </Button>
                     </motion.div>
                   </div>
