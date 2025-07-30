@@ -25,7 +25,7 @@ export default function BonusesSection() {
   return (
     <section
       id="bonuses"
-      className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden py-20"
+      className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 relative overflow-hidden py-5"
     >
       {/* Background decorations */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />

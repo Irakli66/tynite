@@ -39,7 +39,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
       {/* Main content */}
-      <div className="relative z-10 text-center space-y-6 sm:space-y-8 w-full max-w-6xl">
+      <div className="relative items-center flex flex-col z-10 text-center space-y-6 sm:space-y-8 w-full max-w-6xl">
         {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -134,30 +134,30 @@ export default function HeroSection() {
             </Button>
           </motion.div>
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          // className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.button
+            onClick={scrollToBonuses}
+            className="flex cursor-pointer flex-col items-center space-y-1 sm:space-y-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+            whileHover={{ y: -2 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.div
+              className="p-2 sm:p-3 rounded-full border-2 border-current group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
+            </motion.div>
+          </motion.button>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.button
-          onClick={scrollToBonuses}
-          className="flex cursor-pointer flex-col items-center space-y-1 sm:space-y-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
-          whileHover={{ y: -2 }}
-          transition={{ duration: 0.2 }}
-        >
-          <motion.div
-            className="p-2 sm:p-3 rounded-full border-2 border-current group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300"
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
-          </motion.div>
-        </motion.button>
-      </motion.div>
 
       {/* Neon accent lines */}
       <motion.div
