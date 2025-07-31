@@ -4,11 +4,6 @@ const API_KEY = process.env.YOUTUBE_API_KEY!;
 const CHANNEL_ID = process.env.CHANNEL_ID!;
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 
-// Cache configuration
-const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
-let cachedData: VideoData | null = null;
-let cacheTimestamp: number = 0;
-
 export interface VideoData {
   regularVideos: YoutubeVideo[];
   liveStreams: YoutubeVideo[];
@@ -81,18 +76,6 @@ interface YouTubeVideoResponse {
   items: YouTubeVideoDetails[];
 }
 
-// Check if cached data is still valid
-function isCacheValid(): boolean {
-  return cachedData !== null && (Date.now() - cacheTimestamp) < CACHE_DURATION;
-}
-
-// Save data to cache
-function saveToCache(data: VideoData): void {
-  cachedData = data;
-  cacheTimestamp = Date.now();
-  console.log("📦 Data cached for 15 minutes");
-}
-
 async function getVideoDetails(videoIds: string[]): Promise<YouTubeVideoDetails[]> {
   if (videoIds.length === 0) return [];
   
@@ -111,12 +94,6 @@ async function getVideoDetails(videoIds: string[]): Promise<YouTubeVideoDetails[
 }
 
 export async function fetchRecentVideos(): Promise<VideoData> {
-  // Check cache first
-  if (isCacheValid()) {
-    console.log("🚀 Returning cached data (no API call needed)");
-    return cachedData!;
-  }
-
   // Check if we should use empty data (no API key or in development)
   if (!API_KEY || !CHANNEL_ID) {
     console.log("⚠️ No API credentials available - returning empty data");
@@ -194,7 +171,9 @@ export async function fetchRecentVideos(): Promise<VideoData> {
                            details.snippet?.liveBroadcastContent === 'upcoming' ||
                            details.snippet?.liveBroadcastContent === 'completed' ||
                            details.liveStreamingDetails ||
-                           details.contentDetails?.duration === 'P0D';
+                           details.contentDetails?.duration === 'P0D' ||
+                           // Additional check: if title contains stream indicators
+                           /\b(stream|live|streaming)\b/i.test(searchItem.snippet.title);
 
       if (isLiveContent) {
         liveStreams.push(videoData);
@@ -207,11 +186,10 @@ export async function fetchRecentVideos(): Promise<VideoData> {
       regularVideos: regularVideos.slice(0, 8),
       liveStreams: liveStreams.slice(0, 8)
     };
-
-    // Cache the result
-    saveToCache(result);
     
     console.log(`✅ Fetched ${result.regularVideos.length} videos and ${result.liveStreams.length} streams`);
+    console.log(`🎥 Regular videos:`, result.regularVideos.map(v => v.snippet.title));
+    console.log(`📺 Live streams:`, result.liveStreams.map(v => v.snippet.title));
     return result;
 
   } catch (error) {
@@ -225,11 +203,4 @@ export async function fetchRecentVideos(): Promise<VideoData> {
 export async function fetchAllVideos(): Promise<YoutubeVideo[]> {
   const { regularVideos, liveStreams } = await fetchRecentVideos();
   return [...regularVideos, ...liveStreams];
-}
-
-// Utility function to manually clear cache (useful for development)
-export function clearVideoCache(): void {
-  cachedData = null;
-  cacheTimestamp = 0;
-  console.log("🗑️ Video cache cleared");
 }
