@@ -15,6 +15,7 @@ const navItems = [
   { name: "BONUSES", href: "/bonus", isExternal: true, isHome: false },
   { name: "VIDEOS", href: "#videos", isExternal: false, isHome: false },
   { name: "SOCIALS", href: "#socials", isExternal: false, isHome: false },
+  { name: "LINKS", href: "/links", isExternal: true, isHome: false },
 ];
 
 export default function Header() {

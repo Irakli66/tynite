@@ -14,6 +14,7 @@ const navItems = [
   { name: "HOME", href: "#hero", isExternal: false, isHome: true },
   { name: "VIDEOS", href: "#videos", isExternal: false, isHome: false },
   { name: "SOCIALS", href: "#socials", isExternal: false, isHome: false },
+  { name: "LINKS", href: "/links", isExternal: true, isHome: false },
 ];
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
@@ -29,7 +30,11 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   };
 
   const handleNavClick = (item: typeof navItems[0]) => {
-    if (item.isHome) {
+    if (item.isExternal) {
+      // For external routes like /bonus, /links, navigate using router
+      onClose();
+      router.push(item.href);
+    } else if (item.isHome) {
       // For HOME, always go to homepage and scroll to top
       onClose();
       if (pathname !== "/") {
