@@ -25,15 +25,15 @@ export default function CRGiftsButton() {
         whileTap={{ scale: 0.95 }}
         className="group relative cursor-pointer"
       >
-                 {/* Main button */}
-         <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-300/30 shadow-green-500/50">
+        {/* Main button */}
+        <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-300/30 shadow-green-500/50">
           {/* CR Emote Image */}
           <div className="absolute inset-0 flex items-center p-1 justify-center">
             <Image
               src="/images/cr-like.png"
               alt="Clash Royale Gift"
-              width={30}
-              height={30}
+              width={100}
+              height={100}
               className="w-40 h-40 object-contain"
               priority
             />
@@ -45,10 +45,10 @@ export default function CRGiftsButton() {
           </div>
         </div>
 
-                 {/* Outer glow effect */}
-         <div className="absolute inset-0 bg-green-500/30 rounded-full blur-xl -z-10 animate-pulse" />
-         
-         {/* Tooltip */}
+        {/* Outer glow effect */}
+        <div className="absolute inset-0 bg-green-500/30 rounded-full blur-xl -z-10 animate-pulse" />
+
+        {/* Tooltip */}
       </motion.button>
     </motion.div>
   );

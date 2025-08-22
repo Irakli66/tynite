@@ -93,8 +93,15 @@ export default function CRGiftsPage() {
             className="mb-8"
           >
             <div className="flex items-center justify-center space-x-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <Crown className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg">
+                <Image
+                  src="/images/cr.png"
+                  alt="cr"
+                  width={100}
+                  height={100}
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div className="text-left">
                 <h1 className="text-4xl font-black tracking-tight text-foreground">
