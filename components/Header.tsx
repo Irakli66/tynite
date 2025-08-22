@@ -35,6 +35,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", updateScrolled);
   }, []);
 
+  const isActive = (item: typeof navItems[0]) => {
+    if (item.isHome) {
+      return pathname === "/";
+    }
+    if (item.isExternal) {
+      return pathname === item.href;
+    }
+    return false;
+  };
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -157,6 +167,8 @@ export default function Header() {
                         className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
                           item.name === "BONUSES" 
                             ? "text-primary-foreground bg-gradient-to-r from-primary to-accent rounded-lg px-4 shadow-lg hover:shadow-xl hover:shadow-primary/25" 
+                            : isActive(item)
+                            ? "text-foreground"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                         whileHover={{ y: -1, scale: item.name === "BONUSES" ? 1.05 : 1 }}
@@ -197,6 +209,16 @@ export default function Header() {
 
                         {item.name !== "BONUSES" && (
                           <>
+                            {/* Active indicator */}
+                            {isActive(item) && (
+                              <motion.div
+                                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
+                                initial={{ width: 0 }}
+                                animate={{ width: "100%" }}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
+                              />
+                            )}
+
                             {/* Electric blue underline on hover for other items */}
                             <motion.div
                               className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
@@ -219,11 +241,23 @@ export default function Header() {
                   ) : item.isHome ? (
                     <motion.button
                       onClick={() => handleNavClick(item)}
-                      className="relative cursor-pointer text-sm font-bold text-muted-foreground hover:text-foreground transition-colors duration-300 py-2 group"
+                      className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
+                        isActive(item) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      }`}
                       whileHover={{ y: -1 }}
                       transition={{ duration: 0.2 }}
                     >
                       {item.name}
+
+                      {/* Active indicator */}
+                      {isActive(item) && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
+                          initial={{ width: 0 }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                        />
+                      )}
 
                       {/* Electric blue underline on hover */}
                       <motion.div
@@ -244,11 +278,23 @@ export default function Header() {
                   ) : (
                     <motion.button
                       onClick={() => handleNavClick(item)}
-                      className="relative cursor-pointer text-sm font-bold text-muted-foreground hover:text-foreground transition-colors duration-300 py-2 group"
+                      className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
+                        isActive(item) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      }`}
                       whileHover={{ y: -1 }}
                       transition={{ duration: 0.2 }}
                     >
                       {item.name}
+
+                      {/* Active indicator */}
+                      {isActive(item) && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
+                          initial={{ width: 0 }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                        />
+                      )}
 
                       {/* Electric blue underline on hover */}
                       <motion.div
