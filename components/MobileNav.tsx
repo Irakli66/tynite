@@ -15,6 +15,7 @@ const navItems = [
   { name: "VIDEOS", href: "#videos", isExternal: false, isHome: false },
   { name: "SOCIALS", href: "#socials", isExternal: false, isHome: false },
   { name: "LINKS", href: "/links", isExternal: true, isHome: false },
+  { name: "CR GIFTS", href: "/cr-gifts", isExternal: true, isHome: false },
 ];
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {

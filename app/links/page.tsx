@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink, Heart, Globe, Users } from "lucide-react";
+import { ExternalLink, Heart, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socials } from "@/types/socials";
 
