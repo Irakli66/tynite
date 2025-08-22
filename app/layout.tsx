@@ -5,6 +5,7 @@ import { QueryProvider } from "@/components/QueryProvider";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/Header";
+import CRGiftsButton from "@/components/CRGiftsButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Header />
           <QueryProvider>{children}</QueryProvider>
           <Footer />
+          <CRGiftsButton />
         </ThemeProvider>
       </body>
     </html>
