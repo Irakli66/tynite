@@ -235,7 +235,7 @@ export default function CRGiftsPage() {
                               }`}
                             >
                               <Download className="w-4 h-4 mr-2" />
-                              {isExpired ? "Expired" : "Claim Gift"}
+                              {isExpired ? "Expired" : "CLAIM GIFT"}
                             </Button>
                           </motion.div>
 
