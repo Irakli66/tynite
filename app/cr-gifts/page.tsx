@@ -16,7 +16,7 @@ const crGifts = [
     claimUrl:
       "https://link.clashroyale.com/?action=voucher&code=26660292-0b2e-441f-9747-4816b7427150",
     available: true,
-    expiresAt: new Date("2025-08-26T09:00:00Z"), // August 26, 2025 at 09:00 UTC
+    expiresAt: new Date("2025-08-27T09:00:00Z"), // August 26, 2025 at 09:00 UTC
   },
   // You can add more gifts here as they become available
   // {
