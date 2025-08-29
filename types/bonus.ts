@@ -34,6 +34,14 @@ export const bonuses: Bonus[] = [
   },
   {
     id: "4",
+    title: "CSGOROLL.COM",
+    description: "3 free cases and 5% deposit bonus",
+    imageUrl: "/images/websites/csgoroll-logo.png",
+    link: "https://csgoroll.com/r/TYNITE",
+    code: "TYNITE",
+  },
+  {
+    id: "5",
     title: "Packdraw.com",
     description: "5% deposit bonus",
     imageUrl: "/images/websites/packdraw.png",
@@ -41,7 +49,7 @@ export const bonuses: Bonus[] = [
     code: "TYNITE",
   },
   {
-    id: "5",
+    id: "6",
     title: "CSGOEMPIRE.COM",
     description: "free gift case",
     imageUrl: "/images/websites/csgoempire.png",
