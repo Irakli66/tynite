@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/Header";
 import CRGiftsButton from "@/components/CRGiftsButton";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Footer />
           <CRGiftsButton />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
