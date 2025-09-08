@@ -17,10 +17,10 @@ const donationLinks = [
   },
   {
     id: "worldwide",
-    title: "Worldwide Support",
+    title: "Donate Worldwide",
     description: "Global donation platform",
     icon: "🌍",
-    link: "https://www.donationalerts.com/r/tynite",
+    link: "https://streamlabs.com/tynite66/tip",
     color: "from-blue-600 to-indigo-700",
   },
 ];
