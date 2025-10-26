@@ -129,9 +129,7 @@ export default function CRGiftsPage() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            მიიღეთ ექსკლუზიური Clash Royale საჩუქრები Tynite-ისგან! როგორც
-            ოფიციალური Supercell კრეატორი, მე მოგაწვდით სპეციალურ ბანერებს,
-            ემოციებს და მეტს. არ გამოტოვოთ ეს შეზღუდული დროის შეთავაზებები!
+            მიიღეთ ექსკლუზიური Clash Royale საჩუქრები Tynite-სგან!
           </motion.p>
         </motion.div>
 

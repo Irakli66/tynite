@@ -17,6 +17,12 @@ const navItems = [
   { name: "SOCIALS", href: "#socials", isExternal: false, isHome: false },
   { name: "LINKS", href: "/links", isExternal: true, isHome: false },
   { name: "CR GIFTS", href: "/cr-gifts", isExternal: true, isHome: false },
+  {
+    name: "WIDGETS",
+    href: "https://widgets.tynite.live",
+    isExternal: true,
+    isHome: false,
+  },
 ];
 
 export default function Header() {
@@ -35,7 +41,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", updateScrolled);
   }, []);
 
-  const isActive = (item: typeof navItems[0]) => {
+  const isActive = (item: (typeof navItems)[0]) => {
     if (item.isHome) {
       return pathname === "/";
     }
@@ -52,7 +58,7 @@ export default function Header() {
     }
   };
 
-  const handleNavClick = (item: typeof navItems[0]) => {
+  const handleNavClick = (item: (typeof navItems)[0]) => {
     if (item.isExternal) {
       // For external routes like /bonus, navigate using router
       return;
@@ -165,13 +171,16 @@ export default function Header() {
                     <Link href={item.href}>
                       <motion.div
                         className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
-                          item.name === "BONUSES" 
-                            ? "text-primary-foreground bg-gradient-to-r from-primary to-accent rounded-lg px-4 shadow-lg hover:shadow-xl hover:shadow-primary/25" 
+                          item.name === "BONUSES"
+                            ? "text-primary-foreground bg-gradient-to-r from-primary to-accent rounded-lg px-4 shadow-lg hover:shadow-xl hover:shadow-primary/25"
                             : isActive(item)
                             ? "text-foreground"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
-                        whileHover={{ y: -1, scale: item.name === "BONUSES" ? 1.05 : 1 }}
+                        whileHover={{
+                          y: -1,
+                          scale: item.name === "BONUSES" ? 1.05 : 1,
+                        }}
                         transition={{ duration: 0.2 }}
                       >
                         {item.name === "BONUSES" && (
@@ -204,7 +213,7 @@ export default function Header() {
                             />
                           </>
                         )}
-                        
+
                         <span className="relative z-10">{item.name}</span>
 
                         {item.name !== "BONUSES" && (
@@ -242,7 +251,9 @@ export default function Header() {
                     <motion.button
                       onClick={() => handleNavClick(item)}
                       className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
-                        isActive(item) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                        isActive(item)
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                       whileHover={{ y: -1 }}
                       transition={{ duration: 0.2 }}
@@ -279,7 +290,9 @@ export default function Header() {
                     <motion.button
                       onClick={() => handleNavClick(item)}
                       className={`relative cursor-pointer text-sm font-bold transition-colors duration-300 py-2 group ${
-                        isActive(item) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                        isActive(item)
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                       whileHover={{ y: -1 }}
                       transition={{ duration: 0.2 }}
@@ -346,7 +359,7 @@ export default function Header() {
                           ease: "easeInOut",
                         }}
                       />
-                      
+
                       {/* Sparkle effect */}
                       <motion.div
                         className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-accent rounded-full"
@@ -360,7 +373,7 @@ export default function Header() {
                           delay: 0.5,
                         }}
                       />
-                      
+
                       <span className="relative z-10">BONUSES</span>
                     </motion.div>
                   </Link>

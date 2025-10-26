@@ -9,16 +9,16 @@ import { socials } from "@/types/socials";
 const donationLinks = [
   {
     id: "kisa",
-    title: "Kisa Georgia",
-    description: "Support local community initiatives",
+    title: "Kisa.ge საქართველო",
+    description: "მადლობა მხარდაჭერისთვის!",
     icon: "🇬🇪",
     link: "https://www.kisa.ge/donate/tynite",
     color: "from-green-600 to-emerald-700",
   },
   {
     id: "worldwide",
-    title: "Donate Worldwide",
-    description: "Global donation platform",
+    title: "დონაცია Streamlabs-ით",
+    description: "გლობალური დონაციის პლატფორმა",
     icon: "🌍",
     link: "https://streamlabs.com/tynite66/tip",
     color: "from-blue-600 to-indigo-700",
@@ -104,8 +104,7 @@ export default function LinksPage() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-lg text-muted-foreground mb-8 max-w-md mx-auto"
           >
-            Connect with me across all platforms and support my content creation
-            journey
+            მხარი დაუჭირე ჩემს კონტენტს და გამომყევი სოციალურ ქსელებში!
           </motion.p>
         </motion.div>
 
@@ -121,7 +120,7 @@ export default function LinksPage() {
               <Heart className="w-5 h-5 text-white" />
             </div>
             <h2 className="text-2xl font-black tracking-tight text-foreground">
-              SUPPORT ME
+              დონაციის ლინკები
             </h2>
           </div>
 
@@ -173,8 +172,8 @@ export default function LinksPage() {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Users className="w-5 h-5 text-primary-foreground" />
             </div>
-            <h2 className="text-2xl font-black tracking-tight text-foreground">
-              FOLLOW ME
+            <h2 className="md:text-2xl text-xl font-black tracking-tight text-foreground">
+              გამომყევი სოციალურ ქსელებში
             </h2>
           </div>
 
@@ -234,7 +233,7 @@ export default function LinksPage() {
           <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full border border-primary/20">
             <span className="text-sm font-bold text-primary">✨</span>
             <span className="text-sm font-bold text-foreground">
-              Thanks for your support!
+              მადლობა გვერდში დგომისთვის!
             </span>
             <span className="text-sm font-bold text-primary">✨</span>
           </div>
