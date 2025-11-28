@@ -19,18 +19,18 @@ const crGifts = [
     expiresAt: new Date("2025-08-27T09:00:00Z"), // August 26, 2025 at 09:00 UTC
   },
   // You can add more gifts here as they become available
-  // {
-  //   id: "emote",
-  //   title: "Special Emote",
-  //   description: "Limited edition emote from Tynite",
-  //   type: "Emote",
-  //   rarity: "Legendary",
-  //   imageUrl: "/images/cr-emote.png",
-  //   claimUrl:
-  //     "https://link.clashroyale.com/?action=voucher&code=YOUR_EMOTE_CODE",
-  //   available: true,
-  //   expiresAt: new Date("2024-12-31T23:59:59Z"),
-  // },
+  {
+    id: "Chest",
+    title: "Three Musketeers Chest",
+    description: "100 აღების შემდეგ დაემათება მინი პერკას ბანერები.",
+    type: "Chest",
+    rarity: "Common",
+    imageUrl: "/images/gifts-banners/chest.png",
+    claimUrl:
+      "https://store.supercell.com/clashroyale?voucher=b16edec3-669a-4dea-b0d7-cdfcfbf38bec",
+    available: true,
+    expiresAt: new Date("2025-12-02T00:00:00Z"),
+  },
 ];
 
 const rarityColors = {
