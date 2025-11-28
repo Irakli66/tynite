@@ -22,7 +22,7 @@ const crGifts = [
   {
     id: "Chest",
     title: "Three Musketeers Chest x3",
-    description: "100 აღების შემდეგ დაემათება მინი პერკას ბანერები.",
+    description: "100 აღების შემდეგ დაემატება მინი პერკას ბანერები.",
     type: "Chest",
     rarity: "Common",
     imageUrl: "/images/gifts-banners/chest.png",
