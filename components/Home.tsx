@@ -18,7 +18,7 @@ export default function Home({ videoData }: HomeProps) {
       {/* Main content with padding-top to account for fixed header */}
       <main>
         <HeroSection />
-        <BonusesSection />
+        {/* <BonusesSection /> */}
         <RecentVideosSection videoData={videoData} />
         <SocialsSection />
       </main>

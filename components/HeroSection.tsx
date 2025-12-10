@@ -48,12 +48,7 @@ export default function HeroSection() {
           className="space-y-1 sm:space-y-2"
         >
           <p className="text-sm sm:text-lg md:text-xl text-muted-foreground tracking-wider px-4">
-            Use code{" "}
-            <span className="font-bold text-primary">&quot;TYNITE&quot;</span>{" "}
-            and earn rewards
-          </p>
-          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground px-4">
-            and bonuses with our partners.
+            YOU FINALLY LANDED
           </p>
         </motion.div>
 
@@ -106,7 +101,7 @@ export default function HeroSection() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 w-full"
         >
-          <motion.div
+          {/* <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="w-full sm:w-auto"
@@ -117,7 +112,7 @@ export default function HeroSection() {
             >
               BONUSES
             </Button>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             whileHover={{ scale: 1.05 }}

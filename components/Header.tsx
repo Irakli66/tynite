@@ -12,7 +12,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 const navItems = [
   { name: "HOME", href: "#hero", isExternal: false, isHome: true },
-  { name: "BONUSES", href: "/bonus", isExternal: true, isHome: false },
+  // { name: "BONUSES", href: "/bonus", isExternal: true, isHome: false },
   { name: "VIDEOS", href: "#videos", isExternal: false, isHome: false },
   { name: "SOCIALS", href: "#socials", isExternal: false, isHome: false },
   { name: "LINKS", href: "/links", isExternal: true, isHome: false },
@@ -333,7 +333,7 @@ export default function Header() {
             {/* Right side controls */}
             <div className="flex items-center space-x-3">
               {/* Mobile BONUSES button - visible only on mobile */}
-              <div className="md:hidden">
+              {/* <div className="md:hidden">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -346,7 +346,6 @@ export default function Header() {
                       whileTap={{ scale: 0.95 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {/* Animated background glow for mobile BONUSES */}
                       <motion.div
                         className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-lg blur-sm opacity-60"
                         animate={{
@@ -360,7 +359,6 @@ export default function Header() {
                         }}
                       />
 
-                      {/* Sparkle effect */}
                       <motion.div
                         className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-accent rounded-full"
                         animate={{
@@ -378,7 +376,7 @@ export default function Header() {
                     </motion.div>
                   </Link>
                 </motion.div>
-              </div>
+              </div> */}
 
               <ThemeToggle />
 

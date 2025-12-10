@@ -7,19 +7,6 @@ import { Button } from "@/components/ui/button";
 
 const crGifts = [
   {
-    id: "banner",
-    title: "Exclusive Banner and Background",
-    description: "1 x Furnace Fam Decoration + The Long Road Background.",
-    type: "Banner and Background",
-    rarity: "Epic",
-    imageUrl: "/images/gifts-banners/FurnaceWalkBB.png", // You can add a banner preview image
-    claimUrl:
-      "https://link.clashroyale.com/?action=voucher&code=26660292-0b2e-441f-9747-4816b7427150",
-    available: true,
-    expiresAt: new Date("2025-08-27T09:00:00Z"), // August 26, 2025 at 09:00 UTC
-  },
-  // You can add more gifts here as they become available
-  {
     id: "Chest",
     title: "Three Musketeers Chest x3",
     description: "100 აღების შემდეგ დაემატება მინი პერკას ბანერები.",
@@ -30,6 +17,18 @@ const crGifts = [
       "https://store.supercell.com/clashroyale?voucher=b16edec3-669a-4dea-b0d7-cdfcfbf38bec",
     available: true,
     expiresAt: new Date("2025-12-02T00:00:00Z"),
+  },
+  {
+    id: "banner",
+    title: "Exclusive Banner and Background",
+    description: "1 x Furnace Fam Decoration + The Long Road Background.",
+    type: "Banner and Background",
+    rarity: "Epic",
+    imageUrl: "/images/gifts-banners/FurnaceWalkBB.png", // You can add a banner preview image
+    claimUrl:
+      "https://link.clashroyale.com/?action=voucher&code=26660292-0b2e-441f-9747-4816b7427150",
+    available: true,
+    expiresAt: new Date("2025-08-27T09:00:00Z"), // August 26, 2025 at 09:00 UTC
   },
 ];
 
